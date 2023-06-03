@@ -1,7 +1,5 @@
 package com.luisfelipe.devcalendarapi.dto.client;
 
-import com.luisfelipe.devcalendarapi.dto.client.CreateClientDTO;
-import com.luisfelipe.devcalendarapi.dto.client.ResponseClientDTO;
 import com.luisfelipe.devcalendarapi.entities.Client;
 import org.springframework.stereotype.Component;
 

@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Objects;
 
 
-@NoArgsConstructor
-@Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@Entity
 public class Client {
 
     public Client(String name, String email, String password) {

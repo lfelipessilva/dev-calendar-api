@@ -15,12 +15,14 @@ import java.util.Optional;
 @RequestMapping("/client")
 public class ClientController {
 
+    private final ClientRepository clientRepository;
+    private final Mapper mapper;
 
     @Autowired
-    private ClientRepository clientRepository;
-
-    @Autowired
-    private Mapper mapper;
+    public ClientController(ClientRepository clientRepository, Mapper mapper) {
+        this.clientRepository = clientRepository;
+        this.mapper = mapper;
+    }
 
     @GetMapping("/{clientId}")
     public ResponseEntity<ResponseClientDTO> getClient(@PathVariable Long clientId) {
@@ -31,8 +33,10 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client createClient(@RequestBody CreateClientDTO clientDTO) {
+    public ResponseEntity<ResponseClientDTO> createClient(@RequestBody CreateClientDTO clientDTO) {
         Client client = mapper.toClient(clientDTO);
-        return clientRepository.save(client);
+        Client createdClient = clientRepository.save(client);
+
+        return ResponseEntity.ok().body(mapper.toDto(createdClient));
     }
 }
