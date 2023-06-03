@@ -1,14 +1,13 @@
-package com.luisfelipe.devcalendarapi.dto;
+package com.luisfelipe.devcalendarapi.dto.event;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class CreateEventDTO {
     private Long clientId;
     private Date start;

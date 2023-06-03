@@ -7,9 +7,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
+
+@NoArgsConstructor
 @Entity
+@Getter
+@Setter
 public class Client {
+
+    public Client(String name, String email, String password) {
+        this.name = Objects.requireNonNull(name);
+        this.email= Objects.requireNonNull(email);
+        this.password = this.encrypt(password);
+    }
+
+    private String encrypt(String password) {
+        return password;
+    }
+
     @Id()
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
@@ -24,31 +40,4 @@ public class Client {
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Event> events;
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

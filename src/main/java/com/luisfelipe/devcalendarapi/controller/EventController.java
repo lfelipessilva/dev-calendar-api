@@ -1,6 +1,6 @@
 package com.luisfelipe.devcalendarapi.controller;
 
-import com.luisfelipe.devcalendarapi.dto.CreateEventDTO;
+import com.luisfelipe.devcalendarapi.dto.event.CreateEventDTO;
 import com.luisfelipe.devcalendarapi.entities.Client;
 import com.luisfelipe.devcalendarapi.entities.Event;
 import com.luisfelipe.devcalendarapi.repositories.ClientRepository;

@@ -1,4 +1,4 @@
-package com.luisfelipe.devcalendarapi.dto;
+package com.luisfelipe.devcalendarapi.dto.client;
 
 import com.luisfelipe.devcalendarapi.entities.Client;
 import lombok.AllArgsConstructor;
