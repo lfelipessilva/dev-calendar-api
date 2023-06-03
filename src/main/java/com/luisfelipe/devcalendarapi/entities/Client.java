@@ -6,20 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 public class Client {
     @Id()
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Event> events;
     public Long getId() {
         return id;
     }

@@ -19,18 +19,14 @@ public class ClientController {
     private ClientRepository clientRepository;
 
     @GetMapping("/{clientId}")
-    public ResponseEntity<?> getClient(@PathVariable Long clientId) {
+    public ResponseEntity<Client> getClient(@PathVariable Long clientId) {
         Optional<Client> client = clientRepository.findById(clientId);
 
-        if (client.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
-        }
-
-        return ResponseEntity.ok(ResponseClientDTO.toDTO(client.get()));
+        return client.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Client createUser(@RequestBody Client client) {
+    public Client createClient(@RequestBody Client client) {
         return clientRepository.save(client);
     }
 }
